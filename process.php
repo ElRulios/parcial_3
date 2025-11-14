@@ -31,7 +31,7 @@ $interests  = isset($_POST['interests']) && is_array($_POST['interests']) ? $_PO
 $observations = isset($_POST['observations']) ? trim($_POST['observations']) : '';
 $email = isset($_POST['email']) ? filter_var($_POST['email'], FILTER_SANITIZE_EMAIL) : null;
 $phone = isset($_POST['phone']) ? preg_replace('/[^0-9\+\-\s]/','', $_POST['phone']) : null;
-$form_date = date('Y-m-d');
+$form_date = isset($_POST['fecha']) ? $_POST['fecha'] : '';
 
 // Validaciones servidor
 if ($first_name === '') $errors[] = "El nombre es requerido.";
@@ -60,6 +60,14 @@ $interest_ids = [];
 foreach ($interests as $i) {
     $i = intval($i);
     if ($i > 0) $interest_ids[] = $i;
+}
+
+if (empty($fecha)) {
+    $errores[] = "La fecha es obligatoria.";
+}
+
+if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha)) {
+    $errores[] = "Formato de fecha inválido.";
 }
 
 // Si hay errores, los mostramos (puedes mejorar mostrando en formulario)

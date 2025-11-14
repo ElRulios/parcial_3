@@ -104,6 +104,11 @@ try {
           <input id="phone" name="phone" type="text" >
         </div>
 
+        <div class="form-group">
+            <label for="fecha">Fecha del formulario:</label>
+            <input id="date" type="date" id="fecha" name="fecha" required>
+        </div>
+
       </div>
 
       <div class="controls">
@@ -112,8 +117,7 @@ try {
       </div>
 
       <div class="footer">
-        <div>© <?=date('Y')?> iTECH. All rights reserved. Contacto: info@itech.example</div>
-        <div>Fecha del formulario: <?=date('Y-m-d')?></div>
+        <div>© <?=date('Y')?> iTECH. All rights reserved.</div>
       </div>
     </form>
   </div>
